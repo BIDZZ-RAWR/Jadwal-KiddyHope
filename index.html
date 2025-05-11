@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jadwal Shift KiddyHope - Mei 2025">
+    <meta name="author" content="Muhammad Abid">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="print-color-adjust" content="exact">
+    <title>Jadwal Shift KiddyHope - Mei 2025</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span class="loading-text">Loading Ya Sayang...</span>
+        </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button id="themeToggle" title="Ubah Tema">
+            <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="datetime-display">
+                <div id="current-time" title="Waktu Saat Ini"></div>
+                <div id="current-date" title="Tanggal Saat Ini"></div>
+            </div>
+
+            <h1>
+                <i class="fas fa-calendar-alt"></i>
+                Jadwal Shift - Mei 2025
+            </h1>
+        </header>
+
+        <!-- Control Section -->
+        <section class="controls-section">
+            <!-- View Controls -->
+            <div class="view-controls">
+                <button id="todayBtn" class="active" title="Lihat jadwal hari ini">
+                    <i class="fas fa-calendar-day"></i>
+                    <span>Hari Ini</span>
+                </button>
+                <button id="tomorrowBtn" title="Lihat jadwal besok">
+                    <i class="fas fa-calendar-plus"></i>
+                    <span>Besok</span>
+                </button>
+                <button id="allBtn" title="Lihat semua jadwal">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Semua Jadwal</span>
+                </button>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Cari nama karyawan..." 
+                           title="Ketik nama karyawan" autocomplete="off">
+                    <button class="clear-search" id="clearSearch" title="Hapus pencarian">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="filter-box">
+                    <select id="shiftFilter" title="Filter berdasarkan shift">
+                        <option value="all">Semua Shift</option>
+                        <option value="P">Shift Pagi</option>
+                        <option value="S">Shift Malam</option>
+                        <option value="PS">Lembur</option>
+                        <option value="X">Libur</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section class="schedule-section">
+            <!-- Mobile Gesture Hint -->
+            <div class="gesture-hint">
+                <i class="fas fa-hand-point-right"></i>
+                <span>Geser untuk melihat lebih banyak</span>
+            </div>
+
+            <!-- Table Wrapper -->
+            <div class="table-wrapper">
+                <div class="scroll-indicator">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="fixed-column">
+                                <div class="th-content">
+                                    <i class="fas fa-users"></i>
+                                    <span>Nama</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fixed-column">
+                                <div class="employee-name">
+                                    <i class="fas fa-user"></i>
+                                    <span>Cici</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">
+                                <div class="employee-name">
+                                    <i class="fas fa-user"></i>
+                                    <span>Irma</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">
+                                <div class="employee-name">
+                                    <i class="fas fa-user"></i>
+                                    <span>Yesa</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">
+                                <div class="employee-name">
+                                    <i class="fas fa-user"></i>
+                                    <span>Aya</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">
+                                <div class="employee-name">
+                                    <i class="fas fa-user"></i>
+                                    <span>Agus</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">
+                                <div class="employee-name">
+                                    <i class="fas fa-user"></i>
+                                    <span>Abid</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Summary Section -->
+        <section class="summary-section">
+            <h2>
+                <i class="fas fa-chart-bar"></i>
+                Ringkasan Shift
+            </h2>
+            <div class="summary-wrapper">
+                <table class="summary-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <i class="fas fa-user"></i>
+                                Nama
+                            </th>
+                            <th>
+                                <i class="fas fa-sun"></i>
+                                Pagi (P)
+                            </th>
+                            <th>
+                                <i class="fas fa-moon"></i>
+                                Malam (S)
+                            </th>
+                            <th>
+                                <i class="fas fa-clock"></i>
+                                Lembur (PS)
+                            </th>
+                            <th>
+                                <i class="fas fa-home"></i>
+                                Libur (X)
+                            </th>
+                            <th>
+                                <i class="fas fa-calendar-check"></i>
+                                Total Hari
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cici</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>Irma</td>
+                            <td>12</td>
+                            <td>11</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>Yesa</td>
+                            <td>12</td>
+                            <td>11</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>Aya</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>Agus</td>
+                            <td>12</td>
+                            <td>11</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>31</td>
+                        </tr>
+                        <tr>
+                            <td>Abid</td>
+                            <td>11</td>
+                            <td>13</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>31</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Total</strong></td>
+                            <td><strong>69</strong></td>
+                            <td><strong>71</strong></td>
+                            <td><strong>23</strong></td>
+                            <td><strong>24</strong></td>
+                            <td><strong>186</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Legend Section -->
+        <section class="legend">
+            <h3>
+                <i class="fas fa-info-circle"></i>
+                Keterangan Shift:
+            </h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <span class="legend-icon shift-p">P</span>
+                    <span class="legend-text">Shift Pagi (09:00 - 17:00)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon shift-s">S</span>
+                    <span class="legend-text">Shift Malam (14:00 - 22:00)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon shift-ps">PS</span>
+                    <span class="legend-text">Lembur (09:00 - 22:00)</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-icon shift-x">X</span>
+                    <span class="legend-text">Libur</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="action-buttons">
+            <button id="exportBtn" title="Export ke Excel">
+                <i class="fas fa-file-excel"></i>
+                <span>Export</span>
+            </button>
+            <button id="printBtn" title="Cetak jadwal">
+                <i class="fas fa-print"></i>
+                <span>Cetak</span>
+            </button>
+            <button id="shareBtn" title="Bagikan jadwal">
+                <i class="fas fa-share-alt"></i>
+                <span>Bagikan</span>
+            </button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>
+                    <i class="fas fa-calendar-check"></i>
+                    Jadwal Shift Karyawan Kiddyhope
+                </p>
+                <p>
+                    <i class="fas fa-clock"></i>
+                    Update Otomatis
+                </p>
+            </div>
+            
+            <!-- Credits -->
+            <div class="credits">
+                <p>Created with <i class="fas fa-heart"></i> by 
+                    <span class="credit-name">Muhammad Abid</span>
+                </p>
+                <p class="version">Version 1.0.0</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <i class="fas fa-info-circle notification-icon"></i>
+        <span id="notification-message"></span>
+        <button class="notification-close" title="Tutup notifikasi">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Bagikan Jadwal</h3>
+                <button class="modal-close" title="Tutup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <button class="share-button" data-platform="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </button>
+                <button class="share-button" data-platform="telegram">
+                    <i class="fab fa-telegram"></i>
+                    Telegram
+                </button>
+                <button class="share-button" data-platform="email">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </button>
+                <button class="share-button" data-platform="copy">
+                    <i class="fas fa-copy"></i>
+                    Salin Link
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(error => {
+                        console.error('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
