@@ -6,7 +6,7 @@
 ![Responsive](https://img.shields.io/badge/responsive-yes-green.svg)
 
 <p align="center">
-  <img src="screenshots/preview.png" alt="Preview Aplikasi" width="100%">
+  <img src="ss.png" alt="Preview Aplikasi" width="100%">
 </p>
 
 ## 📌 Daftar Isi
@@ -49,7 +49,7 @@
 
 ## 🔥 Demo
 
-Lihat demo aplikasi [di sini](https://your-demo-link.com)
+Lihat demo aplikasi [di sini](https://bidzz-rawr.github.io/Jadwal-KiddyHope)
 
 ## 🛠 Teknologi
 
@@ -64,12 +64,12 @@ Lihat demo aplikasi [di sini](https://your-demo-link.com)
 
 1. Clone repository:
 ```bash
-git clone https://github.com/Muhammadabid7/jadwal-shift.git
+git clone https://github.com/BIDZZ-RAWR/Jadwal-KiddyHope.git
 ```
 
 2. Masuk ke direktori:
 ```bash
-cd jadwal-shift
+cd Jadwal-KiddyHope
 ```
 
 3. Buka dengan live server atau server lokal Anda.
@@ -104,7 +104,7 @@ Didistribusikan di bawah Lisensi MIT. Lihat `LICENSE` untuk informasi lebih lanj
 
 ## 🙏 Terimakasih
 
-* Allah
+* Allah SWT
 * Orang Tua
 * [Font Awesome](https://fontawesome.com)
 * [Google Fonts](https://fonts.google.com)
@@ -119,16 +119,16 @@ Didistribusikan di bawah Lisensi MIT. Lihat `LICENSE` untuk informasi lebih lanj
 - [ ] Dashboard admin
 - [ ] Notifikasi real-time
 - [ ] Integrasi database
-- [ ] Mobile app version
+- [x] Mobile app version
 
 ## 📊 Statistik Project
 
-![GitHub stars](https://img.shields.io/github/stars/Muhammadabid7/jadwal-shift?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Muhammadabid7/jadwal-shift?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/Muhammadabid7/jadwal-shift?style=social)
+![GitHub stars](https://img.shields.io/github/stars/BIDZZ-RAWR/Jadwal-KiddyHope?style=social)
+![GitHub forks](https://img.shields.io/github/forks/BIDZZ-RAWR/Jadwal-KiddyHope?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/BIDZZ-RAWR/Jadwal-KiddyHope?style=social)
 
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://github.com/Muhammadabid7">Muhammad Abid</a>
+  Made with ❤️ by <a href="https://github.com/BIDZZ-RAWR">Muhammad Abid</a>
 </p>
