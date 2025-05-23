@@ -1,182 +1,95 @@
-const CACHE_NAME = 'shift-schedule-v1.0.0';
-const OFFLINE_URL = '/offline.html';
+// Nama cache untuk versioning
+const CACHE_NAME = 'kiddyhope-cache-v2';
 
-const STATIC_RESOURCES = [
+// Daftar file dan sumber daya yang akan di-cache
+const urlsToCache = [
     '/',
     '/index.html',
-    '/offline.html',
     '/styles.css',
     '/script.js',
-    '/favicon.png',
     '/manifest.json',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
-    '/icons/icon-72x72.png',
-    '/icons/icon-96x96.png',
-    '/icons/icon-128x128.png',
-    '/icons/icon-144x144.png',
-    '/icons/icon-152x152.png',
-    '/icons/icon-192x192.png',
-    '/icons/icon-384x384.png',
-    '/icons/icon-512x512.png'
+    '/favicon.png',
+    '/favicon.png',
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css',
+    'https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+    'https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'
 ];
 
-// Install Event
-self.addEventListener('install', (event) => {
+// Event: Install
+// Menyimpan file ke cache saat service worker diinstal
+self.addEventListener('install', event => {
     event.waitUntil(
-        Promise.all([
-            caches.open(CACHE_NAME).then((cache) => {
-                return cache.addAll(STATIC_RESOURCES);
-            }),
-            // Cache offline page separately
-            caches.open(CACHE_NAME).then((cache) => {
-                return cache.add(OFFLINE_URL);
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                console.log('Caching files');
+                return cache.addAll(urlsToCache);
             })
-        ]).then(() => {
-            return self.skipWaiting();
-        })
+            .catch(error => {
+                console.error('Cache installation failed:', error);
+            })
     );
+    // Langsung aktifkan service worker tanpa menunggu reload
+    self.skipWaiting();
 });
 
-// Activate Event
-self.addEventListener('activate', (event) => {
+// Event: Activate
+// Membersihkan cache lama jika ada perubahan versi
+self.addEventListener('activate', event => {
     event.waitUntil(
-        caches.keys().then((cacheNames) => {
+        caches.keys().then(cacheNames => {
             return Promise.all(
-                cacheNames
-                    .filter((cacheName) => cacheName !== CACHE_NAME)
-                    .map((cacheName) => caches.delete(cacheName))
+                cacheNames.map(cacheName => {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log('Deleting old cache:', cacheName);
+                        return caches.delete(cacheName);
+                    }
+                })
             );
-        }).then(() => {
+        })
+        .then(() => {
+            console.log('Service worker activated');
             return self.clients.claim();
         })
+        .catch(error => {
+            console.error('Activation failed:', error);
+        })
     );
 });
 
-// Fetch Event
-self.addEventListener('fetch', (event) => {
-    // Handle navigation requests
-    if (event.request.mode === 'navigate') {
-        event.respondWith(
-            fetch(event.request)
-                .catch(() => {
-                    return caches.match(OFFLINE_URL);
-                })
-        );
-        return;
-    }
-
-    // Handle other requests
+// Event: Fetch
+// Menangani permintaan jaringan dengan strategi cache-first
+self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
-            .then((response) => {
+            .then(response => {
+                // Kembalikan dari cache jika ada
                 if (response) {
                     return response;
                 }
-
-                // Clone the request because it's a stream and can only be consumed once
-                const fetchRequest = event.request.clone();
-
-                return fetch(fetchRequest)
-                    .then((response) => {
-                        // Check if valid response
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // Clone the response because it's a stream and can only be consumed once
-                        const responseToCache = response.clone();
-
-                        caches.open(CACHE_NAME)
-                            .then((cache) => {
-                                cache.put(event.request, responseToCache);
+                // Jika tidak ada di cache, ambil dari jaringan
+                return fetch(event.request)
+                    .then(networkResponse => {
+                        // Cache respons baru untuk permintaan GET
+                        if (networkResponse && networkResponse.status === 200 && event.request.method === 'GET') {
+                            return caches.open(CACHE_NAME).then(cache => {
+                                cache.put(event.request, networkResponse.clone());
+                                return networkResponse;
                             });
-
-                        return response;
+                        }
+                        return networkResponse;
                     })
-                    .catch(() => {
-                        // Return offline page for HTML requests
-                        if (event.request.headers.get('accept').includes('text/html')) {
-                            return caches.match(OFFLINE_URL);
+                    .catch(error => {
+                        console.error('Fetch failed:', error);
+                        // Kembalikan index.html untuk navigasi offline
+                        if (event.request.mode === 'navigate') {
+                            return caches.match('/index.html');
                         }
                     });
             })
+            .catch(error => {
+                console.error('Cache match failed:', error);
+            })
     );
-});
-
-// Background Sync
-self.addEventListener('sync', (event) => {
-    if (event.tag === 'sync-schedule') {
-        event.waitUntil(
-            // Implement your sync logic here
-            syncSchedule()
-        );
-    }
-});
-
-// Push Notification
-self.addEventListener('push', (event) => {
-    const options = {
-        body: event.data.text(),
-        icon: '/icons/icon-192x192.png',
-        badge: '/icons/badge-72x72.png',
-        vibrate: [100, 50, 100],
-        data: {
-            dateOfArrival: Date.now(),
-            primaryKey: 1
-        },
-        actions: [
-            {
-                action: 'explore',
-                title: 'Lihat Jadwal',
-                icon: '/icons/checkmark.png'
-            },
-            {
-                action: 'close',
-                title: 'Tutup',
-                icon: '/icons/xmark.png'
-            }
-        ]
-    };
-
-    event.waitUntil(
-        self.registration.showNotification('Jadwal Shift Update', options)
-    );
-});
-
-// Notification Click
-self.addEventListener('notificationclick', (event) => {
-    event.notification.close();
-
-    if (event.action === 'explore') {
-        event.waitUntil(
-            clients.openWindow('/')
-        );
-    }
-});
-
-// Helper Functions
-async function syncSchedule() {
-    try {
-        const response = await fetch('/api/sync-schedule');
-        if (response.ok) {
-            const cache = await caches.open(CACHE_NAME);
-            await cache.put('/api/schedule', response);
-        }
-    } catch (error) {
-        console.error('Sync failed:', error);
-    }
-}
-
-// Periodic Background Sync
-self.addEventListener('periodicsync', (event) => {
-    if (event.tag === 'update-schedule') {
-        event.waitUntil(syncSchedule());
-    }
-});
-
-// Share Target
-self.addEventListener('fetch', (event) => {
-    if (event.request.url.includes('/share-target/')) {
-        // Handle share target here
-    }
 });
