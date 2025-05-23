@@ -53,11 +53,6 @@
 | **Berbagi Jadwal** | Bagikan jadwal via WhatsApp, Telegram, Email, atau salin link. |
 | **Ringkasan Shift** | Statistik jumlah shift per karyawan dalam tabel ringkas. |
 
-### 📸 Screenshot
-
-| Tabel Shift (Tema Gelap) | Kalender (Tema Terang) | PDF Cetak |
-|--------------------------|------------------------|-----------|
-| ![Tabel Shift](screenshots/table-dark.png) | ![Kalender](screenshots/calendar-light.png) | ![PDF](screenshots/pdf-output.png) |
 
 ---
 
@@ -150,7 +145,6 @@ Jadwal-KiddyHope/
 ├── service-worker.js   # Caching untuk PWA
 ├── favicon.png         # Ikon situs
 ├── icon.png    # Ikon PWA
-└── screenshots/        # Folder untuk screenshot
 ```
 
 ---
