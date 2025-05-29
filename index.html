@@ -27,6 +27,12 @@
         </div>
 
         <section class="controls-section">
+            <div class="month-selector">
+                <select id="monthFilter">
+                    <option value="Mei">Mei 2025</option>
+                    <option value="Juni">Juni 2025</option>
+                </select>
+            </div>
             <div class="view-controls">
                 <button id="tableBtn" class="active"><i class="fas fa-table"></i> Tabel</button>
                 <button id="calendarBtn"><i class="fas fa-calendar"></i> Kalender</button>
@@ -68,34 +74,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Data fallback untuk 5 hari pertama -->
-                            <tr>
-                                <td class="fixed-column">
-                                    <div class="employee-name">
-                                        <i class="fas fa-user fa-lg"></i>
-                                        <span>Cici</span>
-                                    </div>
-                                </td>
-                                <td class="shift-p" data-shift="P">P</td>
-                                <td class="shift-p" data-shift="P">P</td>
-                                <td class="shift-p" data-shift="P">P</td>
-                                <td class="shift-s" data-shift="S">S</td>
-                                <td class="shift-x" data-shift="X">X</td>
-                            </tr>
-                            <tr>
-                                <td class="fixed-column">
-                                    <div class="employee-name">
-                                        <i class="fas fa-user fa-lg"></i>
-                                        <span>Irma</span>
-                                    </div>
-                                </td>
-                                <td class="shift-s" data-shift="S">S</td>
-                                <td class="shift-s" data-shift="S">S</td>
-                                <td class="shift-s" data-shift="S">S</td>
-                                <td class="shift-p" data-shift="P">P</td>
-                                <td class="shift-ps" data-shift="PS">PS</td>
-                            </tr>
-                            <!-- Tambahkan karyawan lain sesuai kebutuhan -->
+                            <!-- Data diisi oleh JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -164,7 +143,7 @@
         <footer class="footer">
             <div class="footer-content">
                 <p class="credits">Created with <i class="fas fa-heart"></i> by <span class="credit-name">Muhammad Abid</span></p>
-                <p class="version">Versi 2.0.0</p>
+                <p class="version">Versi 3.0.0</p>
             </div>
         </footer>
     </div>

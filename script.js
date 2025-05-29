@@ -1,16 +1,25 @@
 (() => {
     // Data Shift
     const shiftData = {
-        'Cici':  ['P', 'P', 'P', 'S', 'X', 'PS', 'S', 'S', 'P', 'P', 'S', 'PS', 'P', 'X', 'S', 'S', 'P', 'P', 'PS', 'X', 'S', 'S', 'S', 'S', 'P', 'PS', 'S', 'S', 'P', 'P', 'X'],
-        'Irma': ['S', 'S', 'S', 'P', 'PS', 'X', 'P', 'P', 'S', 'S', 'P', 'X', 'S', 'PS', 'P', 'P', 'S', 'S', 'X', 'PS', 'P', 'P', 'P', 'P', 'S', 'X', 'P', 'P', 'S', 'S', 'PS'],
-        'Yesa': ['P', 'P', 'S', 'X', 'S', 'S', 'PS', 'S', 'P', 'P', 'P', 'S', 'X', 'P', 'PS', 'P', 'P', 'P', 'P', 'X', 'PS', 'S', 'S', 'S', 'S', 'S', 'X', 'PS', 'P', 'P', 'S'],
-        'Aya':  ['S', 'S', 'P', 'PS', 'P', 'P', 'X', 'P', 'S', 'S', 'S', 'P', 'PS', 'S', 'X', 'S', 'S', 'S', 'S', 'PS', 'X', 'P', 'P', 'P', 'P', 'P', 'PS', 'X', 'S', 'S', 'P'],
-        'Agus': ['P', 'P', 'P', 'S', 'S', 'S', 'S', 'X', 'PS', 'P', 'P', 'S', 'S', 'S', 'PS', 'X', 'S', 'S', 'P', 'P', 'P', 'PS', 'X', 'S', 'P', 'P', 'P', 'PS', 'P', 'X', 'S'],
-        'Abid': ['S', 'S', 'S', 'P', 'P', 'P', 'P', 'S', 'X', 'S', 'S', 'P', 'P', 'P', 'X', 'PS', 'P', 'P', 'S', 'S', 'S', 'X', 'PS', 'P', 'S', 'S', 'S', 'X', 'S', 'PS', 'P']
+        'Mei': {
+            'Cici': ['P', 'P', 'P', 'S', 'X', 'PS', 'S', 'S', 'P', 'P', 'S', 'PS', 'P', 'X', 'S', 'S', 'P', 'P', 'PS', 'X', 'S', 'S', 'S', 'S', 'P', 'PS', 'S', 'S', 'P', 'P', 'X'],
+            'Irma': ['S', 'S', 'S', 'P', 'PS', 'X', 'P', 'P', 'S', 'S', 'P', 'X', 'S', 'PS', 'P', 'P', 'S', 'S', 'X', 'PS', 'P', 'P', 'P', 'P', 'S', 'X', 'P', 'P', 'S', 'S', 'PS'],
+            'Yesa': ['P', 'P', 'S', 'X', 'S', 'S', 'PS', 'S', 'P', 'P', 'P', 'S', 'X', 'P', 'PS', 'P', 'P', 'P', 'P', 'X', 'PS', 'S', 'S', 'S', 'S', 'S', 'X', 'PS', 'P', 'P', 'S'],
+            'Aya': ['S', 'S', 'P', 'PS', 'P', 'P', 'X', 'P', 'S', 'S', 'S', 'P', 'PS', 'S', 'X', 'S', 'S', 'S', 'S', 'PS', 'X', 'P', 'P', 'P', 'P', 'P', 'PS', 'X', 'S', 'S', 'P'],
+            'Agus': ['P', 'P', 'P', 'S', 'S', 'S', 'S', 'X', 'PS', 'P', 'P', 'S', 'S', 'S', 'PS', 'X', 'S', 'S', 'P', 'P', 'P', 'PS', 'X', 'S', 'P', 'P', 'P', 'PS', 'P', 'X', 'S'],
+            'Abid': ['S', 'S', 'S', 'P', 'P', 'P', 'P', 'S', 'X', 'S', 'S', 'P', 'P', 'P', 'X', 'PS', 'P', 'P', 'S', 'S', 'S', 'X', 'PS', 'P', 'S', 'S', 'S', 'X', 'S', 'PS', 'P']
+        },
+        'Juni': {
+            'Cici': ['P', 'PS', 'S', 'P', 'P', 'S', 'S', 'P', 'P', 'PS', 'S', 'S', 'P', 'X', 'X', 'X', 'X', 'X', 'S', 'PS', 'S', 'S', 'P', 'P', 'PS', 'P', 'P', 'S', 'S', 'S'],
+            'Agus': ['S', 'X', 'P', 'S', 'S', 'P', 'P', 'S', 'S', 'X', 'P', 'P', 'S', 'PS', 'PS', 'S', 'PS', 'PS', 'P', 'X', 'P', 'P', 'S', 'S', 'X', 'S', 'S', 'P', 'P', 'P'],
+            'Abid': ['S', 'P', 'PS', 'X', 'P', 'S', 'S', 'P', 'X', 'PS', 'S', 'S', 'P', 'P', 'P', 'S', 'PS', 'P', 'X', 'P', 'S', 'S', 'X', 'PS', 'P', 'P', 'P', 'S', 'S', 'S'],
+            'Irma': ['P', 'S', 'X', 'PS', 'S', 'P', 'P', 'S', 'PS', 'X', 'P', 'P', 'S', 'S', 'S', 'P', 'X', 'S', 'PS', 'S', 'P', 'P', 'PS', 'X', 'S', 'S', 'S', 'P', 'P', 'P'],
+            'Aya': ['PS', 'X', 'S', 'S', 'S', 'P', 'P', 'P', 'S', 'S', 'X', 'PS', 'S', 'S', 'S', 'P', 'P', 'X', 'P', 'PS', 'P', 'P', 'S', 'S', 'X', 'PS', 'P', 'P', 'S', 'S'],
+            'Yesa': ['X', 'PS', 'P', 'P', 'P', 'S', 'S', 'S', 'P', 'P', 'PS', 'X', 'P', 'P', 'P', 'S', 'S', 'PS', 'S', 'X', 'S', 'S', 'P', 'P', 'PS', 'X', 'S', 'S', 'S', 'P']
+        }
     };
 
     // Constants
-    const MONTH = 'Mei';
     const YEAR = '2025';
     const APP_NAME = 'Jadwal Shift KiddyHope';
 
@@ -42,7 +51,8 @@
         currentTime: document.getElementById('current-time'),
         currentDate: document.getElementById('current-date'),
         summaryTbody: document.querySelector('.summary-table tbody'),
-        notificationClose: document.querySelector('.notification-close')
+        notificationClose: document.querySelector('.notification-close'),
+        monthFilter: document.getElementById('monthFilter')
     };
 
     // State Management
@@ -51,7 +61,8 @@
         searchTerm: '',
         currentFilter: 'all',
         theme: localStorage.getItem('theme') || 'light',
-        isLoading: false
+        isLoading: false,
+        currentMonth: 'Mei' // Default to Mei
     };
 
     // Utility Functions
@@ -77,7 +88,13 @@
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit'
-        })
+        }),
+        getDaysInMonth: (month) => {
+            return month === 'Juni' ? 30 : 31;
+        },
+        getMonthIndex: (month) => {
+            return month === 'Mei' ? 4 : 5;
+        }
     };
 
     // UI Functions
@@ -123,7 +140,7 @@
                 state.currentView = 'today';
                 const today = new Date();
                 const dayIndex = today.getDate() - 1;
-                if (dayIndex < 0 || dayIndex >= 31) {
+                if (dayIndex < 0 || dayIndex >= utils.getDaysInMonth(state.currentMonth)) {
                     throw new Error('Tanggal hari ini di luar rentang jadwal');
                 }
                 ui.clearTable();
@@ -146,7 +163,7 @@
                 const tomorrow = new Date();
                 tomorrow.setDate(tomorrow.getDate() + 1);
                 const dayIndex = tomorrow.getDate() - 1;
-                if (dayIndex < 0 || dayIndex >= 31) {
+                if (dayIndex < 0 || dayIndex >= utils.getDaysInMonth(state.currentMonth)) {
                     throw new Error('Tanggal besok di luar rentang jadwal');
                 }
                 ui.clearTable();
@@ -167,10 +184,10 @@
             try {
                 state.currentView = 'all';
                 ui.clearTable();
-                const days = Array.from({length: 31}, (_, i) => i + 1);
-                const dates = days.map(day => new Date(2025, 4, day));
+                const days = Array.from({length: utils.getDaysInMonth(state.currentMonth)}, (_, i) => i + 1);
+                const dates = days.map(day => new Date(2025, utils.getMonthIndex(state.currentMonth), day));
                 this.createHeaders(days, dates);
-                this.fillTableData(Array.from({length: 31}, (_, i) => i));
+                this.fillTableData(Array.from({length: utils.getDaysInMonth(state.currentMonth)}, (_, i) => i));
                 this.updateActiveButton(elements.allBtn);
                 this.updateSummary();
                 ui.showNotification('Menampilkan semua jadwal');
@@ -186,12 +203,10 @@
             try {
                 state.currentView = 'table';
                 ui.clearTable();
-                const days = Array.from({length: 31
-
-}, (_, i) => i + 1);
-                const dates = days.map(day => new Date(2025, 4, day));
+                const days = Array.from({length: utils.getDaysInMonth(state.currentMonth)}, (_, i) => i + 1);
+                const dates = days.map(day => new Date(2025, utils.getMonthIndex(state.currentMonth), day));
                 this.createHeaders(days, dates);
-                this.fillTableData(Array.from({length: 31}, (_, i) => i));
+                this.fillTableData(Array.from({length: utils.getDaysInMonth(state.currentMonth)}, (_, i) => i));
                 this.updateActiveButton(elements.tableBtn);
                 this.updateSummary();
                 ui.showNotification('Menampilkan tabel jadwal');
@@ -232,7 +247,7 @@
         },
         fillTableData(daysIndices) {
             elements.tbody.innerHTML = '';
-            Object.entries(shiftData).forEach(([name, shifts]) => {
+            Object.entries(shiftData[state.currentMonth]).forEach(([name, shifts]) => {
                 if (this.shouldShowRow(name)) {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
@@ -261,7 +276,7 @@
         updateSummary() {
             elements.summaryTbody.innerHTML = '';
             const totals = { P: 0, S: 0, PS: 0, X: 0 };
-            Object.entries(shiftData).forEach(([name, shifts]) => {
+            Object.entries(shiftData[state.currentMonth]).forEach(([name, shifts]) => {
                 if (this.shouldShowRow(name)) {
                     const counts = { P: 0, S: 0, PS: 0, X: 0 };
                     shifts.forEach(shift => {
@@ -318,6 +333,7 @@
                 },
                 height: 'auto',
                 locale: 'id',
+                initialDate: `2025-${utils.getMonthIndex(state.currentMonth) + 1}-01`,
                 eventContent: (arg) => {
                     return { html: `<div>${arg.event.title}: ${arg.event.extendedProps.shift}</div>` };
                 }
@@ -326,11 +342,11 @@
         },
         generateCalendarEvents() {
             const events = [];
-            Object.entries(shiftData).forEach(([name, shifts]) => {
+            Object.entries(shiftData[state.currentMonth]).forEach(([name, shifts]) => {
                 if (this.shouldShowRow(name)) {
                     shifts.forEach((shift, index) => {
                         if (this.shouldShowShift(shift)) {
-                            const eventDate = new Date(2025, 4, index + 1);
+                            const eventDate = new Date(2025, utils.getMonthIndex(state.currentMonth), index + 1);
                             events.push({
                                 title: name,
                                 start: eventDate,
@@ -362,6 +378,11 @@
         handleFilter() {
             state.currentFilter = elements.shiftFilter.value;
             viewManager[`show${state.currentView.charAt(0).toUpperCase() + state.currentView.slice(1)}Schedule`]();
+        },
+        handleMonthFilter() {
+            state.currentMonth = elements.monthFilter.value;
+            viewManager[`show${state.currentView.charAt(0).toUpperCase() + state.currentView.slice(1)}Schedule`]();
+            ui.showNotification(`Menampilkan jadwal bulan ${state.currentMonth}`);
         },
         handlePrint() {
             const currentSearchTerm = state.searchTerm;
@@ -419,7 +440,7 @@
                     doc.addImage(imgData, 'PNG', 10, yOffset, pdfWidth, pdfHeight);
                     yOffset = 10;
                 }
-                doc.save(`Jadwal_Shift_${MONTH}_${YEAR}.pdf`);
+                doc.save(`Jadwal_Shift_${state.currentMonth}_${YEAR}.pdf`);
                 ui.showNotification('PDF berhasil diunduh', 'success');
                 state.searchTerm = currentSearchTerm;
                 state.currentFilter = currentFilter;
@@ -434,8 +455,8 @@
         },
         handleExport() {
             try {
-                const rows = [['Nama', ...Array.from({length: 31}, (_, i) => i + 1)]];
-                Object.entries(shiftData).forEach(([name, shifts]) => {
+                const rows = [['Nama', ...Array.from({length: utils.getDaysInMonth(state.currentMonth)}, (_, i) => i + 1)]];
+                Object.entries(shiftData[state.currentMonth]).forEach(([name, shifts]) => {
                     if (viewManager.shouldShowRow(name)) {
                         rows.push([name, ...shifts]);
                     }
@@ -445,7 +466,7 @@
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `jadwal_shift_${MONTH}_${YEAR}.csv`;
+                a.download = `jadwal_shift_${state.currentMonth}_${YEAR}.csv`;
                 a.click();
                 window.URL.revokeObjectURL(url);
                 ui.showNotification('Jadwal berhasil diekspor ke CSV', 'success');
@@ -455,7 +476,7 @@
             }
         },
         handleShare(platform) {
-            const text = `${APP_NAME} - ${MONTH} ${YEAR}`;
+            const text = `${APP_NAME} - ${state.currentMonth} ${YEAR}`;
             const url = window.location.href;
             try {
                 switch (platform) {
@@ -512,6 +533,7 @@
             elements.searchInput.addEventListener('input', handlers.handleSearch);
             elements.clearSearch.addEventListener('click', handlers.handleClearSearch);
             elements.shiftFilter.addEventListener('change', handlers.handleFilter);
+            elements.monthFilter.addEventListener('change', handlers.handleMonthFilter);
             elements.exportBtn.addEventListener('click', handlers.handleExport);
             elements.printBtn.addEventListener('click', handlers.handlePrint);
             elements.pdfBtn.addEventListener('click', handlers.handleGeneratePDF);
