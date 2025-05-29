@@ -580,7 +580,7 @@
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/service-worker.js').catch(error => {
                     console.error('Service Worker registration failed:', error);
-                    ui.showNotification('Gagal mendaftarkan Service Worker', 'error');
+                    ui.showNotification('Created With 🤍 By Bidzz Official');
                 });
             }
 
