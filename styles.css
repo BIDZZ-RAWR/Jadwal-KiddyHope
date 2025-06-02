@@ -125,6 +125,37 @@ body {
     color: var(--text-secondary);
 }
 
+/* Brochure Section */
+.brochure-section {
+    background: var(--surface-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.brochure-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.brochure-container {
+    display: flex;
+    justify-content: center;
+}
+
+.brochure-image {
+    max-width: 100%;
+    width: 600px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-md);
+}
+
 /* Controls Section */
 .controls-section {
     background: var(--surface-color);
@@ -583,12 +614,14 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
-/* Theme Switcher */
+/* Theme Switcher and Audio Control */
 .theme-switcher {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+    display: flex;
+    gap: 10px;
 }
 
 .theme-switcher button {
@@ -684,6 +717,12 @@ body {
     #current-time {
         font-size: 1.5rem;
     }
+    .brochure-section h2 {
+        font-size: 1.2rem;
+    }
+    .brochure-image {
+        width: 100%;
+    }
     .schedule-table th,
     .schedule-table td,
     .summary-table th,
@@ -718,8 +757,7 @@ body {
     }
     body {
         background: white !important;
-        padding:  Ascending: 0,
-        Descending: 0
+        padding: 0;
     }
     .container {
         box-shadow: none !important;
@@ -737,6 +775,14 @@ body {
     #loading-overlay,
     #calendar-view {
         display: none !important;
+    }
+    .brochure-section {
+        page-break-before: always !important;
+        text-align: center;
+    }
+    .brochure-image {
+        width: 200mm !important;
+        margin: 0 auto;
     }
     #table-view {
         display: block !important;

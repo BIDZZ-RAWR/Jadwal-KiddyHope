@@ -40,6 +40,9 @@
         modalClose: document.querySelector('.modal-close'),
         themeToggle: document.getElementById('themeToggle'),
         themeIcon: document.getElementById('themeIcon'),
+        audioToggle: document.getElementById('audioToggle'),
+        audioIcon: document.getElementById('audioIcon'),
+        backgroundAudio: document.getElementById('backgroundAudio'),
         currentTime: document.getElementById('current-time'),
         currentDate: document.getElementById('current-date'),
         summaryTbody: document.querySelector('.summary-table tbody'),
@@ -54,6 +57,7 @@
         currentFilter: 'all',
         theme: localStorage.getItem('theme') || 'light',
         isLoading: false,
+        isAudioPlaying: false,
         currentMonth: 'Juni' // Default to Juni
     };
 
@@ -115,6 +119,9 @@
         updateTheme: () => {
             document.documentElement.setAttribute('data-theme', state.theme);
             elements.themeIcon.className = `fas fa-${state.theme === 'light' ? 'moon' : 'sun'} fa-lg`;
+        },
+        updateAudioIcon: () => {
+            elements.audioIcon.className = `fas fa-${state.isAudioPlaying ? 'volume-up' : 'volume-mute'} fa-lg`;
         },
         clearTable: () => {
             while (elements.headerRow.children.length > 1) {
@@ -267,8 +274,6 @@
         },
         updateSummary() {
             elements.summaryTbody.innerHTML = '';
-ellement
-
             const totals = { P: 0, S: 0, PS: 0, X: 0 };
             Object.entries(shiftData[state.currentMonth]).forEach(([name, shifts]) => {
                 if (this.shouldShowRow(name)) {
@@ -419,6 +424,7 @@ ellement
                 state.currentFilter = 'all';
                 await viewManager.showAllSchedule();
                 const sections = [
+                    document.querySelector('.brochure-section'),
                     document.querySelector('.schedule-section'),
                     document.querySelector('.summary-section'),
                     document.querySelector('.legend')
@@ -508,6 +514,23 @@ ellement
             localStorage.setItem('theme', state.theme);
             ui.updateTheme();
             ui.showNotification(`Tema ${state.theme === 'light' ? 'Terang' : 'Gelap'} diaktifkan`, 'success');
+        },
+        toggleAudio() {
+            if (state.isAudioPlaying) {
+                elements.backgroundAudio.pause();
+                state.isAudioPlaying = false;
+                ui.showNotification('Musik dijeda', 'info');
+            } else {
+                elements.backgroundAudio.muted = false; // Unmute on user interaction
+                elements.backgroundAudio.play().then(() => {
+                    state.isAudioPlaying = true;
+                    ui.showNotification('Musik diputar', 'info');
+                }).catch(error => {
+                    console.error('Error playing audio:', error);
+                    ui.showNotification('Gagal memutar musik', 'error');
+                });
+            }
+            ui.updateAudioIcon();
         }
     };
 
@@ -517,6 +540,7 @@ ellement
             ui.updateTheme();
             ui.updateDateTime();
             setInterval(ui.updateDateTime, 1000);
+            ui.updateAudioIcon();
 
             // Event Listeners
             elements.todayBtn.addEventListener('click', () => viewManager.showTodaySchedule());
@@ -534,6 +558,7 @@ ellement
             elements.shareBtn.addEventListener('click', handlers.toggleShareModal);
             elements.modalClose.addEventListener('click', handlers.toggleShareModal);
             elements.themeToggle.addEventListener('click', handlers.toggleTheme);
+            elements.audioToggle.addEventListener('click', handlers.toggleAudio);
             elements.notificationClose.addEventListener('click', () => {
                 elements.notification.style.display = 'none';
             });
@@ -542,7 +567,7 @@ ellement
             });
 
             // Ripple Effect
-            document.querySelectorAll('.view-controls button, .action-buttons button, .share-button').forEach(btn => {
+            document.querySelectorAll('.view-controls button, .action-buttons button, .share-button, #audioToggle').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     const rect = this.getBoundingClientRect();
                     const size = Math.max(rect.width, rect.height);

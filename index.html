@@ -26,6 +26,14 @@
             <div id="current-date"></div>
         </div>
 
+        <!-- Brochure Section -->
+        <section class="brochure-section">
+            <h2><i class="fas fa-bullhorn"></i> Promo KiddyHope</h2>
+            <div class="brochure-container">
+                <img src="promo.png" alt="Promo KiddyHope" class="brochure-image">
+            </div>
+        </section>
+
         <section class="controls-section">
             <div class="month-selector">
                 <select id="monthFilter">
@@ -142,7 +150,7 @@
         <footer class="footer">
             <div class="footer-content">
                 <p class="credits">Created with <i class="fas fa-heart"></i> by <span class="credit-name">Muhammad Abid</span></p>
-                <p class="version">Versi 3.0.0</p>
+                <p class="version">Versi 3.4.0</p>
             </div>
         </footer>
     </div>
@@ -174,7 +182,11 @@
 
     <div class="theme-switcher">
         <button id="themeToggle" data-tooltip="Ganti tema"><i id="themeIcon" class="fas fa-moon fa-lg"></i></button>
+        <button id="audioToggle" data-tooltip="Putar/Jeda Musik"><i id="audioIcon" class="fas fa-volume-up fa-lg"></i></button>
     </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundAudio" src="bidzz.mp3" autoplay loop muted></audio>
 
     <!-- Library untuk PDF dan FullCalendar -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
