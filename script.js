@@ -1,14 +1,6 @@
 (() => {
     // Data Shift
     const shiftData = {
-        'Mei': {
-            'Cici': ['P', 'P', 'P', 'S', 'X', 'PS', 'S', 'S', 'P', 'P', 'S', 'PS', 'P', 'X', 'S', 'S', 'P', 'P', 'PS', 'X', 'S', 'S', 'S', 'S', 'P', 'PS', 'S', 'S', 'P', 'P', 'X'],
-            'Irma': ['S', 'S', 'S', 'P', 'PS', 'X', 'P', 'P', 'S', 'S', 'P', 'X', 'S', 'PS', 'P', 'P', 'S', 'S', 'X', 'PS', 'P', 'P', 'P', 'P', 'S', 'X', 'P', 'P', 'S', 'S', 'PS'],
-            'Yesa': ['P', 'P', 'S', 'X', 'S', 'S', 'PS', 'S', 'P', 'P', 'P', 'S', 'X', 'P', 'PS', 'P', 'P', 'P', 'P', 'X', 'PS', 'S', 'S', 'S', 'S', 'S', 'X', 'PS', 'P', 'P', 'S'],
-            'Aya': ['S', 'S', 'P', 'PS', 'P', 'P', 'X', 'P', 'S', 'S', 'S', 'P', 'PS', 'S', 'X', 'S', 'S', 'S', 'S', 'PS', 'X', 'P', 'P', 'P', 'P', 'P', 'PS', 'X', 'S', 'S', 'P'],
-            'Agus': ['P', 'P', 'P', 'S', 'S', 'S', 'S', 'X', 'PS', 'P', 'P', 'S', 'S', 'S', 'PS', 'X', 'S', 'S', 'P', 'P', 'P', 'PS', 'X', 'S', 'P', 'P', 'P', 'PS', 'P', 'X', 'S'],
-            'Abid': ['S', 'S', 'S', 'P', 'P', 'P', 'P', 'S', 'X', 'S', 'S', 'P', 'P', 'P', 'X', 'PS', 'P', 'P', 'S', 'S', 'S', 'X', 'PS', 'P', 'S', 'S', 'S', 'X', 'S', 'PS', 'P']
-        },
         'Juni': {
             'Cici': ['P', 'PS', 'S', 'P', 'P', 'S', 'S', 'P', 'P', 'PS', 'S', 'S', 'P', 'X', 'X', 'X', 'X', 'X', 'S', 'PS', 'S', 'S', 'P', 'P', 'PS', 'P', 'P', 'S', 'S', 'S'],
             'Agus': ['S', 'X', 'P', 'S', 'S', 'P', 'P', 'S', 'S', 'X', 'P', 'P', 'S', 'PS', 'PS', 'S', 'PS', 'PS', 'P', 'X', 'P', 'P', 'S', 'S', 'X', 'S', 'S', 'P', 'P', 'P'],
@@ -62,7 +54,7 @@
         currentFilter: 'all',
         theme: localStorage.getItem('theme') || 'light',
         isLoading: false,
-        currentMonth: 'Mei' // Default to Mei
+        currentMonth: 'Juni' // Default to Juni
     };
 
     // Utility Functions
@@ -93,7 +85,7 @@
             return month === 'Juni' ? 30 : 31;
         },
         getMonthIndex: (month) => {
-            return month === 'Mei' ? 4 : 5;
+            return month === 'Juni' ? 5 : 4;
         }
     };
 
@@ -275,6 +267,8 @@
         },
         updateSummary() {
             elements.summaryTbody.innerHTML = '';
+ellement
+
             const totals = { P: 0, S: 0, PS: 0, X: 0 };
             Object.entries(shiftData[state.currentMonth]).forEach(([name, shifts]) => {
                 if (this.shouldShowRow(name)) {
@@ -580,7 +574,7 @@
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/service-worker.js').catch(error => {
                     console.error('Service Worker registration failed:', error);
-                    ui.showNotification('Created With 🤍 By Bidzz Official');
+                    ui.showNotification('Gagal mendaftarkan Service Worker', 'error');
                 });
             }
 

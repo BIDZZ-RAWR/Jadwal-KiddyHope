@@ -718,9 +718,8 @@ body {
     }
     body {
         background: white !important;
-        padding: 0 !important;
-        color: black !important;
-        font-size: 10pt !important;
+        padding:  Ascending: 0,
+        Descending: 0
     }
     .container {
         box-shadow: none !important;
